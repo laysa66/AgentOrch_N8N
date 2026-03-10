@@ -1,0 +1,81 @@
+{
+  "name": "My workflow 4",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        48
+      ],
+      "id": "216e8b05-1488-4e10-bb21-1fd6b8acccb0",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemma-3-4b-it",
+          "mode": "list",
+          "cachedResultName": "models/gemma-3-4b-it"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Explain what a Large Language Model is in one sentence."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -16,
+        48
+      ],
+      "id": "96f0ea3f-a418-499e-8eaa-d87f60512074",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "MzjykkDm10CYBgi9",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "c0b1d3f7-ee91-4b58-9102-03168ef2f930",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "eabb7d5c912e4d8263bd972f91daa3d1abca4cf2967642089cba83deb7b64100"
+  },
+  "id": "7HIioNzCrahLJrQ-8fiSL",
+  "tags": []
+}

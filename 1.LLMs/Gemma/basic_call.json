@@ -1,0 +1,76 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "112e13a5-4805-4ac7-ace0-4200c9413876",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemma-3-4b-it",
+          "mode": "list",
+          "cachedResultName": "models/gemma-3-4b-it"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "hello who are you "
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "fc227bfc-c8db-492b-92ef-729637400684",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "MzjykkDm10CYBgi9",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "e86e87a5-71bd-455e-8b5a-24b0e5b3cd5f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "eabb7d5c912e4d8263bd972f91daa3d1abca4cf2967642089cba83deb7b64100"
+  },
+  "id": "9oo40va0-0VN_Rxzqda47",
+  "tags": []
+}
