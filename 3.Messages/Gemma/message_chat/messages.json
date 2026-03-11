@@ -1,0 +1,83 @@
+{
+  "name": "messages",
+  "nodes": [
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemma-3-4b-it",
+          "mode": "list",
+          "cachedResultName": "models/gemma-3-4b-it"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You explain concepts briefly.",
+              "role": "model"
+            },
+            {
+              "content": "={{$json.chatInput}}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        0
+      ],
+      "id": "084a65af-6231-4830-ae8e-b8eafd470fab",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "MzjykkDm10CYBgi9",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "75ff63df-4ca3-4f7c-b88f-d08e8ac39925",
+      "name": "When chat message received",
+      "webhookId": "ea23801a-5cac-4003-9aca-6bbe00d63a70"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "319fa0ae-badd-475c-9441-e866e35712d8",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "eabb7d5c912e4d8263bd972f91daa3d1abca4cf2967642089cba83deb7b64100"
+  },
+  "id": "qiA3D4JhrfugJpAn",
+  "tags": []
+}
