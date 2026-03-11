@@ -1,0 +1,83 @@
+{
+  "name": "project copy",
+  "nodes": [
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemma-3-4b-it",
+          "mode": "list",
+          "cachedResultName": "models/gemma-3-4b-it"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You are an adaptive educational tutor.\n\nINSTRUCTIONS:\n- If the student asks a basic question (beginner level), explain in simple terms with everyday examples\n- If the student asks an intermediate question, provide balanced explanations with some technical terms\n- If the student asks an advanced question, give detailed technical explanations\n\nSTYLE:\n- Always be encouraging and patient\n- Use examples to clarify concepts\n- Break down complex ideas into steps\n\nNow, answer the student's question clearly and appropriately for their level.",
+              "role": "model"
+            },
+            {
+              "content": "={{$json.chatInput}}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        0
+      ],
+      "id": "b985d2b5-b942-4e00-9a2c-e2b806bf9b50",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "MzjykkDm10CYBgi9",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "bef9a08a-3b1c-4b63-b946-c6b2289dbfce",
+      "name": "When chat message received",
+      "webhookId": "bdc7f55f-5182-4fac-8bc0-e3d2183e61d9"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "502abeda-00d0-4f75-bb11-96fd11d332fd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "eabb7d5c912e4d8263bd972f91daa3d1abca4cf2967642089cba83deb7b64100"
+  },
+  "id": "ROMnnW2QiI13V9i8",
+  "tags": []
+}
